@@ -17,24 +17,21 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 
-	public static void deleteById(Long userId) {
-		userRepository.deleteById(userId);
-	}
-
+	
 	public static List<User> getAllUsers(){
     	return userRepository.findAll();
     }
-	public static User saveOneUser(User newUser) {
+	public static User saveOneUserById(User newUser) {
 
 		return userRepository.save(newUser);
 	}
-	public static User getOneUser(Long userId) {
-
-		return userRepository.findById(userId).orElse(null);
-	}
+	
 	public static Optional<User> findById(Long userId) {
 		
 		return userRepository.findById(userId);
+	}
+	public User saveOneUser(User newUser) {
+		return userRepository.save(newUser);
 	}
 
 	public User updateOneUser(Long userId, User newUser) {
@@ -49,7 +46,15 @@ public class UserService {
 			return null;
 	}
 
-	public User getOneUserById(Long userId) {
+	public static User getOneUserById(Long userId) {
 		return userRepository.findById(userId).orElse(null);
 	}
+
+	public User getOneUserByUserName(String userName) {
+		return userRepository.findByUserName(userName);
+	}
+	public static void deleteById(Long userId) {
+		userRepository.deleteById(userId);
+	}
+
 }

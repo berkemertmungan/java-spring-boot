@@ -10,6 +10,7 @@ public class PostCreateRequest {
 	String title;
 	Long user;
 	Long userId;
+	
 	public Long getUserId() {
 		return userId;
 	}
